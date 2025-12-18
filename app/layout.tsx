@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Provider from "./Provider";
+import * as Sentry from "@sentry/nextjs";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -14,6 +15,9 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "LiveDocs",
   description: "Your go-to collaborative editor",
+  other: {
+    ...Sentry.getTraceData(),
+  },
 };
 
 export default function RootLayout({
